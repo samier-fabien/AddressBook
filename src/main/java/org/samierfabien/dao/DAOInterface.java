@@ -9,26 +9,30 @@ import java.util.List;
  * Tous les DAO doivent implémenter l'interface DAOInterface.
  */
 public interface DAOInterface {
-    /*
-    EXEMPLE DE REQUETES :
+/*
+    EXEMPLES DE REQUETES :
 
-    ProviderDAO providerDAO = new ProviderDAO();
+
+    ContactDAO contactDAO = new ContactDAO();   //initialisation du DAO
 
     //CREATE
-        Entity provider1 = new Provider("nom", "ville", "postal", "adresse");
-        providerDAO.insert(provider1);
+        Entity contact1 = new Contact("nom", "prenom", "statut", "tel", "mail");
+        contactDAO.insert(contact1);
 
     //READ
-        Provider provider2 = (Provider)providerDAO.find(2);
-        System.out.println(provider2.getPro_adresse());
+        Contact contact2 = (Contact) contactDAO.find(2);
+        System.out.println(contact2.getCon_nom());
+
+    //READALL
+        contactDAO.findAll();
 
     //UPDATE
-        Entity provider3 = new Provider(11,"un autre nom", "ville", "postal", "adresse");
-        providerDAO.update(provider3);
+        Entity contact3 = new Contact(11,"un autre nom", "prenom", "statut", "tel", "mail");
+        contactDAO.update(contact3);
 
     //DELETE
-        Entity provider4 = new Provider(11,"un autre nom", "ville", "postal", "adresse");
-        providerDAO.delete(provider4);
+        Entity contact4 = new Contact(11,"un autre nom", "prenom", "statut", "tel", "mail");
+        contactDAO.delete(contact4);
     */
 
     public Entity find(int id);

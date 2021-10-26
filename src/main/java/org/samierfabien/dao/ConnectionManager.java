@@ -7,7 +7,7 @@ public class ConnectionManager {
 
     //OBJECT
     private Connection connection;
-    private final String url = "jdbc:mysql://localhost:3306/javatest?serverTimezone=UTC";
+    private final String url = "jdbc:mysql://localhost:3306/CarnetAdressesJava?serverTimezone=UTC";
     private final String user = "magash";
     private final String pass = "fabisami";
 
