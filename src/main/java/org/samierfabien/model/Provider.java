@@ -8,6 +8,13 @@ public class Provider extends Entity {
 
     public Provider() {}
 
+    public Provider(String pro_nom, String pro_ville, String pro_postal, String pro_adresse) {
+        this.pro_nom = pro_nom;
+        this.pro_ville = pro_ville;
+        this.pro_postal = pro_postal;
+        this.pro_adresse = pro_adresse;
+    }
+
     public Provider(int id, String pro_nom, String pro_ville, String pro_postal, String pro_adresse) {
         super(id);
         this.pro_nom = pro_nom;

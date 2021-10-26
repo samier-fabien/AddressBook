@@ -3,10 +3,7 @@ package org.samierfabien.dao;
 import org.samierfabien.model.Entity;
 import org.samierfabien.model.Provider;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +28,7 @@ public class ProviderDAO implements DAOInterface{
             e.getMessage();
         }
 
-        System.out.println(list.size());
-        return (Entity) list.get(0);
+        return (Entity)list.get(0);
     }
 
     @Override
@@ -60,16 +56,56 @@ public class ProviderDAO implements DAOInterface{
 
     @Override
     public void insert(Entity entity) {
+        Provider provider = (Provider)entity;
+        Connection connection = ConnectionManager.getConnection();
+        PreparedStatement statement = null;
 
+        try {
+            statement = connection.prepareStatement("INSERT INTO provider (pro_nom, pro_ville, pro_postal, pro_adresse) VALUES (?, ?, ?, ?)");
+            statement.setString(1, provider.getPro_nom());
+            statement.setString(2, provider.getPro_ville());
+            statement.setString(3, provider.getPro_postal());
+            statement.setString(4, provider.getPro_adresse());
+            statement.executeUpdate();
+            statement.close();
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     @Override
     public void update(Entity entity) {
+        Provider provider = (Provider)entity;
+        Connection connection = ConnectionManager.getConnection();
+        PreparedStatement statement = null;
 
+        try {
+            statement = connection.prepareStatement("UPDATE provider SET pro_nom = ?, pro_ville = ?, pro_postal = ?, pro_adresse = ? WHERE id=?");
+            statement.setString(1, provider.getPro_nom());
+            statement.setString(2, provider.getPro_ville());
+            statement.setString(3, provider.getPro_postal());
+            statement.setString(4, provider.getPro_adresse());
+            statement.setInt(5, provider.getId());
+            statement.executeUpdate();
+            statement.close();
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     @Override
     public void delete(Entity entity) {
+        Provider provider = (Provider)entity;
+        Connection connection = ConnectionManager.getConnection();
+        PreparedStatement statement = null;
 
+        try {
+            statement = connection.prepareStatement("DELETE FROM provider WHERE id=?");
+            statement.setInt(1, provider.getId());
+            statement.executeUpdate();
+            statement.close();
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 }

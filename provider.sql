@@ -1,5 +1,5 @@
 create table provider (
-	id INT,
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	pro_nom VARCHAR(50),
 	pro_ville VARCHAR(50),
 	pro_postal VARCHAR(50),
