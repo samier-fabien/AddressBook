@@ -23,9 +23,15 @@ public class ContactDAO implements DAOInterface{
                 list.add(new Contact(resultSet.getInt("id"), resultSet.getString("con_nom"), resultSet.getString("con_prenom"), resultSet.getString("con_statut"), resultSet.getString("con_tel"), resultSet.getString("con_mail")));
                 //System.out.println("id : " + resultSet.getInt("id") + " | con_nom : " + resultSet.getString("con_nom") + " | con_prenom : " + resultSet.getString("con_prenom") + " | con_statut : " + resultSet.getString("con_statut") + " | con_tel : " + resultSet.getString("con_tel") + " | con_mail : " + resultSet.getString("con_mail"));
             }
+            resultSet.close();
             statement.close();
         } catch (Exception e) {
-            e.getMessage();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {}
         }
 
         return (Entity)list.get(0);
@@ -45,9 +51,16 @@ public class ContactDAO implements DAOInterface{
                 list.add(new Contact(resultSet.getInt("id"), resultSet.getString("con_nom"), resultSet.getString("con_prenom"), resultSet.getString("con_statut"), resultSet.getString("con_tel"), resultSet.getString("con_mail")));
                 //System.out.println("id : " + resultSet.getInt("id") + " | con_nom : " + resultSet.getString("con_nom") + " | con_prenom : " + resultSet.getString("con_prenom") + " | con_statut : " + resultSet.getString("con_statut") + " | con_tel : " + resultSet.getString("con_tel") + " | con_mail : " + resultSet.getString("con_mail"));
             }
+            resultSet.close();
+            System.out.println("ResultSet close");
             statement.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {}
         }
 
         return list;
@@ -69,7 +82,12 @@ public class ContactDAO implements DAOInterface{
             statement.executeUpdate();
             statement.close();
         } catch (Exception e) {
-            e.getMessage();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {}
         }
     }
 
@@ -90,7 +108,12 @@ public class ContactDAO implements DAOInterface{
             statement.executeUpdate();
             statement.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {}
         }
     }
 
@@ -105,7 +128,12 @@ public class ContactDAO implements DAOInterface{
             statement.executeUpdate();
             statement.close();
         } catch (Exception e) {
-            e.getMessage();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {}
         }
     }
 }

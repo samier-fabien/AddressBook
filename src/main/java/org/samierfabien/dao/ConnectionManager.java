@@ -30,9 +30,7 @@ public class ConnectionManager {
     public static ConnectionManager instance;
 
     public static Connection getConnection() {
-        if (instance == null) {
-            instance = new ConnectionManager();
-        }
+        instance = new ConnectionManager();
         return instance.getCo();
     }
 }
