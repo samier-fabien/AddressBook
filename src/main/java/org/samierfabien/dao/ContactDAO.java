@@ -21,7 +21,7 @@ public class ContactDAO implements DAOInterface{
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 list.add(new Contact(resultSet.getInt("id"), resultSet.getString("con_nom"), resultSet.getString("con_prenom"), resultSet.getString("con_statut"), resultSet.getString("con_tel"), resultSet.getString("con_mail")));
-                System.out.println("id : " + resultSet.getInt("id") + " | con_nom : " + resultSet.getString("con_nom") + " | con_prenom : " + resultSet.getString("con_prenom") + " | con_statut : " + resultSet.getString("con_statut") + " | con_tel : " + resultSet.getString("con_tel") + " | con_mail : " + resultSet.getString("con_mail"));
+                //System.out.println("id : " + resultSet.getInt("id") + " | con_nom : " + resultSet.getString("con_nom") + " | con_prenom : " + resultSet.getString("con_prenom") + " | con_statut : " + resultSet.getString("con_statut") + " | con_tel : " + resultSet.getString("con_tel") + " | con_mail : " + resultSet.getString("con_mail"));
             }
             statement.close();
         } catch (Exception e) {
@@ -43,7 +43,7 @@ public class ContactDAO implements DAOInterface{
             resultSet = statement.executeQuery("SELECT * FROM contact");
             while (resultSet.next()) {
                 list.add(new Contact(resultSet.getInt("id"), resultSet.getString("con_nom"), resultSet.getString("con_prenom"), resultSet.getString("con_statut"), resultSet.getString("con_tel"), resultSet.getString("con_mail")));
-                System.out.println("id : " + resultSet.getInt("id") + " | con_nom : " + resultSet.getString("con_nom") + " | con_prenom : " + resultSet.getString("con_prenom") + " | con_statut : " + resultSet.getString("con_statut") + " | con_tel : " + resultSet.getString("con_tel") + " | con_mail : " + resultSet.getString("con_mail"));
+                //System.out.println("id : " + resultSet.getInt("id") + " | con_nom : " + resultSet.getString("con_nom") + " | con_prenom : " + resultSet.getString("con_prenom") + " | con_statut : " + resultSet.getString("con_statut") + " | con_tel : " + resultSet.getString("con_tel") + " | con_mail : " + resultSet.getString("con_mail"));
             }
             statement.close();
         } catch (Exception e) {
@@ -60,11 +60,12 @@ public class ContactDAO implements DAOInterface{
         PreparedStatement statement = null;
 
         try {
-            statement = connection.prepareStatement("INSERT INTO contact (con_nom, con_prenom, con_statut, con_tel) VALUES (?, ?, ?, ?)");
+            statement = connection.prepareStatement("INSERT INTO contact (con_nom, con_prenom, con_statut, con_tel, con_mail) VALUES (?, ?, ?, ?, ?)");
             statement.setString(1, Contact.getCon_nom());
             statement.setString(2, Contact.getCon_prenom());
             statement.setString(3, Contact.getCon_statut());
             statement.setString(4, Contact.getCon_tel());
+            statement.setString(5, Contact.getCon_mail());
             statement.executeUpdate();
             statement.close();
         } catch (Exception e) {
@@ -79,28 +80,28 @@ public class ContactDAO implements DAOInterface{
         PreparedStatement statement = null;
 
         try {
-            statement = connection.prepareStatement("UPDATE contact SET con_nom = ?, con_prenom = ?, con_statut = ?, con_tel = ? WHERE id=?");
+            statement = connection.prepareStatement("UPDATE contact SET con_nom = ?, con_prenom = ?, con_statut = ?, con_tel = ?, con_mail = ? WHERE id=?");
             statement.setString(1, Contact.getCon_nom());
             statement.setString(2, Contact.getCon_prenom());
             statement.setString(3, Contact.getCon_statut());
             statement.setString(4, Contact.getCon_tel());
-            statement.setInt(5, Contact.getId());
+            statement.setString(5, Contact.getCon_mail());
+            statement.setInt(6, Contact.getId());
             statement.executeUpdate();
             statement.close();
         } catch (Exception e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
 
     @Override
-    public void delete(Entity entity) {
-        Contact Contact = (Contact)entity;
+    public void delete(int id) {
         Connection connection = ConnectionManager.getConnection();
         PreparedStatement statement = null;
 
         try {
             statement = connection.prepareStatement("DELETE FROM contact WHERE id=?");
-            statement.setInt(1, Contact.getId());
+            statement.setInt(1, id);
             statement.executeUpdate();
             statement.close();
         } catch (Exception e) {

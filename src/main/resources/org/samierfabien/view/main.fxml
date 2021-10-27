@@ -7,11 +7,13 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #368DAB;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.samierfabien.controller.MainController">
@@ -20,10 +22,10 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="150.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="contacts" prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn minWidth="75.0" prefWidth="75.0" text="Prénom" />
-                      <TableColumn minWidth="75.0" prefWidth="75.0" text="Nom" />
+                      <TableColumn fx:id="prenomColumn" minWidth="75.0" prefWidth="75.0" text="Prénom" />
+                      <TableColumn fx:id="nomColumn" minWidth="75.0" prefWidth="75.0" text="Nom" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -33,16 +35,22 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="220.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <VBox layoutX="-0.0380859375" prefHeight="298.0" prefWidth="417.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="150.0" text="Détails :">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <GridPane VBox.vgrow="ALWAYS">
+                  <BorderPane prefHeight="348.0" prefWidth="342.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <HBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="150.0" text="Détails :">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </top>
+                     <center>
+                        <GridPane BorderPane.alignment="CENTER">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="NEVER" minWidth="80.0" prefWidth="80.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
@@ -53,103 +61,89 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Nom" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                              <Label text="Nom" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Prénom" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <Label text="Prénom" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Statut" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                              <Label text="Statut" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Téléphone" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <Label text="Téléphone" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Courriel" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                              <Label text="Courriel" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="default" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                              </Label>
-                              <Label text="default" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                              </Label>
-                              <Label text="default" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                              </Label>
-                              <Label text="default" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                              </Label>
-                              <Label text="default" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <GridPane.margin>
-                                    <Insets />
-                                 </GridPane.margin>
-                              </Label>
+                              <TextField fx:id="nomValue" editable="false" GridPane.columnIndex="1" />
+                              <TextField fx:id="prenomValue" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="statutValue" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="telValue" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="courrielValue" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </GridPane>
-                        <ButtonBar buttonMinWidth="100.0" prefHeight="40.0" prefWidth="200.0">
-                          <buttons>
-                              <Button fx:id="addButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" text="Ajouter" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
-                              <Button fx:id="updateButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" text="Modifier" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
-                              <Button fx:id="deleteButton" alignment="CENTER" layoutX="342.0" layoutY="18.0" minHeight="30.0" mnemonicParsing="false" text="Supprimer" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
-                          </buttons>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                        </ButtonBar>
-                     </children>
-                  </VBox>
+                     </center>
+                     <bottom>
+                        <AnchorPane BorderPane.alignment="CENTER">
+                           <children>
+                              <ButtonBar fx:id="mainButtonBar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <buttons>
+                                    <Button fx:id="addButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#addContact" text="Ajouter" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                    <Button fx:id="updateButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#updateContact" text="Modifier" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                    <Button fx:id="deleteButton" alignment="CENTER" layoutX="342.0" layoutY="18.0" minHeight="30.0" mnemonicParsing="false" onAction="#deleteContact" text="Supprimer" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                </buttons>
+                              </ButtonBar>
+                              <ButtonBar fx:id="addButtonBar" buttonMinWidth="100.0" layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="342.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <buttons>
+                                    <Button fx:id="confirmAddButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#confirmAdd" text="Ajouter" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                    <Button fx:id="cancelAddButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#cancelAdd" text="Annuler" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                 </buttons>
+                              </ButtonBar>
+                              <ButtonBar fx:id="updateButtonBar" buttonMinWidth="100.0" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="352.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <buttons>
+                                    <Button fx:id="confirmUpdateButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#confirmUpdate" text="Modifier" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                    <Button fx:id="cancelUpdateButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#cancelUpdate" text="Annuler" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                 </buttons>
+                              </ButtonBar>
+                              <ButtonBar fx:id="deleteButtonBar" buttonMinWidth="100.0" layoutX="20.0" layoutY="20.0" prefHeight="70.0" prefWidth="372.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <buttons>
+                                    <Button fx:id="confirmDeleteButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#confirmDelete" text="Supprimer" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                    <Button fx:id="cancelDeleteButton" alignment="CENTER" layoutX="197.0" layoutY="15.0" minHeight="30.0" mnemonicParsing="false" onAction="#cancelDelete" text="Annuler" textAlignment="CENTER" ButtonBar.buttonData="LEFT" />
+                                 </buttons>
+                              </ButtonBar>
+                           </children>
+                        </AnchorPane>
+                     </bottom>
+                  </BorderPane>
                </children>
             </AnchorPane>
         </items>

@@ -43,5 +43,5 @@ public interface DAOInterface {
 
     public void update(Entity entity);
 
-    public void delete(Entity entity);
+    public void delete(int id);
 }
