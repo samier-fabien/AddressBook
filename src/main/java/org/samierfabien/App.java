@@ -16,7 +16,7 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("TableView");
         primaryStage.setMinWidth(600);
-        primaryStage.setMinHeight(300);
+        primaryStage.setMinHeight(350);
         primaryStage.show();
     }
 }
